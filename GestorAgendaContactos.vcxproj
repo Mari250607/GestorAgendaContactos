@@ -127,7 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AgendaContactos.cpp" />
+    <ClCompile Include="Contacto.cpp" />
     <ClCompile Include="GestorAgendaContactos.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AgendaContactos.h" />
+    <ClInclude Include="Contacto.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
