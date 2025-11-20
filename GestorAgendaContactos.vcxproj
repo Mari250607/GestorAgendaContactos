@@ -130,10 +130,14 @@
     <ClCompile Include="AgendaContactos.cpp" />
     <ClCompile Include="Contacto.cpp" />
     <ClCompile Include="GestorAgendaContactos.cpp" />
+    <ClCompile Include="HistorialOperaciones.cpp" />
+    <ClCompile Include="Operacion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AgendaContactos.h" />
     <ClInclude Include="Contacto.h" />
+    <ClInclude Include="HistorialOperaciones.h" />
+    <ClInclude Include="Operacion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

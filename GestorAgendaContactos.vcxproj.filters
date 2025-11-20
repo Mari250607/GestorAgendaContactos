@@ -24,12 +24,24 @@
     <ClCompile Include="AgendaContactos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Operacion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HistorialOperaciones.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Contacto.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AgendaContactos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Operacion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HistorialOperaciones.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
