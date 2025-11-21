@@ -30,6 +30,12 @@
     <ClCompile Include="HistorialOperaciones.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AgendaContactosPendientes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilidades.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Contacto.h">
@@ -42,6 +48,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HistorialOperaciones.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AgendaContactosPendientes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilidades.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

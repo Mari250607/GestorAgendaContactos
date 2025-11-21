@@ -1,0 +1,30 @@
+#include "AgendaContactosPendientes.h"
+
+// Agrega un contacto a la cola de pendientes con datos especificos
+void AgendaContactosPendientes::agregarContactoPendiente(const Contacto &contacto)
+{
+  contactosPendientes.push(contacto);
+}
+
+// Transferir contactos pendientes a la agenda principal
+void AgendaContactosPendientes::transferirContactosPendientes(AgendaContactos &agenda)
+{
+  // Validar si hay contactos pendientes
+  if (contactosPendientes.empty())
+  {
+    std::cout << "\n\nNo hay contactos pendientes para transferir.\n";
+    return;
+  }
+
+  while (!contactosPendientes.empty())
+  {
+    // Obtener el contacto en la parte frontal de la cola
+    Contacto contacto = contactosPendientes.front();
+    // Agregar el contacto a la agenda principal
+    agenda.agregarContacto(contacto);
+    // Eliminar el contacto ya transferido de la cola
+    contactosPendientes.pop();
+  }
+
+  cout << "\n\nTodos los contactos pendientes han sido transferidos a la agenda principal.\n";
+}

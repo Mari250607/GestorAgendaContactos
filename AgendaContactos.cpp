@@ -1,6 +1,7 @@
 #include "AgendaContactos.h"
 #include <iostream>
 
+// Agrega un nuevo contacto a la agenda solicitando datos al usuario
 void AgendaContactos::agregarContacto()
 {
   // Solicitar datos del contacto al usuario
@@ -92,4 +93,10 @@ void AgendaContactos::agregarContacto()
   cout << "Nombre: " << contactos.back().nombre << "\n";
   cout << "Numero: " << contactos.back().numero << "\n";
   cout << "Email: " << contactos.back().email << "\n";
+}
+
+// Agrega contacto con datos especificos (usado para transferir desde pendientes)
+void AgendaContactos::agregarContacto(const Contacto &contacto)
+{
+  contactos.push_back(contacto);
 }
