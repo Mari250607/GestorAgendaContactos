@@ -10,7 +10,7 @@ public:
   // Agrega una nueva operacion al historial
   void agregarOperacion(const std::string &descripcion);
   // Mostrar ultima (primera) operacion del historial
-  void mostrarUltimaOperacion();
+  void mostrarHistorial();
 
 private:
   // Pila para almacenar las operaciones realizadas

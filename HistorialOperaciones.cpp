@@ -1,5 +1,4 @@
 #include "HistorialOperaciones.h"
-
 // Agrega una nueva operacion al historial
 void HistorialOperaciones::agregarOperacion(const std::string &descripcion)
 {
@@ -8,18 +7,26 @@ void HistorialOperaciones::agregarOperacion(const std::string &descripcion)
 }
 
 // Mostrar ultima (primera) operacion del historial
-void HistorialOperaciones::mostrarUltimaOperacion()
+void HistorialOperaciones::mostrarHistorial()
 {
   if (!historial.empty())
   {
-    // Obtener la ultima operacion del historial
-    Operacion ultimaOperacion = historial.top();
-    std::cout << "Ultima operacion: " << std::endl;
-    // Mostrar la descripcion de la ultima operacion
-    std::cout << ultimaOperacion.getDescripcion() << std::endl;
+    // Se copia la pila para no modificar el historial original
+    std::stack<Operacion> copiaHistorial = historial;
+    std::cout << "\nHistorial de operaciones:\n";
+    // Iterar sobre la pila y mostrar cada operacion
+    while (!copiaHistorial.empty())
+    {
+      // Obtener la operacion superior
+      Operacion op = copiaHistorial.top();
+      // Mostrar la descripcion de la operacion
+      std::cout << "- " << op.getDescripcion() << std::endl;
+      // Eliminar la operacion ya mostrada
+      copiaHistorial.pop();
+    }
   }
   else
   {
-    std::cout << "El historial de operaciones esta vacio." << std::endl;
+    std::cout << "El historial de operaciones esta vacio.\n";
   }
 }
