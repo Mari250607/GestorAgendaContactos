@@ -132,6 +132,8 @@
     <ClCompile Include="Contacto.cpp" />
     <ClCompile Include="GestorAgendaContactos.cpp" />
     <ClCompile Include="HistorialOperaciones.cpp" />
+    <ClCompile Include="ListaEnlazada.cpp" />
+    <ClCompile Include="Nodo.cpp" />
     <ClCompile Include="Operacion.cpp" />
     <ClCompile Include="Utilidades.cpp" />
   </ItemGroup>
@@ -140,6 +142,8 @@
     <ClInclude Include="AgendaContactosPendientes.h" />
     <ClInclude Include="Contacto.h" />
     <ClInclude Include="HistorialOperaciones.h" />
+    <ClInclude Include="ListaEnlazada.h" />
+    <ClInclude Include="Nodo.h" />
     <ClInclude Include="Operacion.h" />
     <ClInclude Include="Utilidades.h" />
   </ItemGroup>

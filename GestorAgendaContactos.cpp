@@ -12,6 +12,8 @@ using namespace std;
 #include "AgendaContactosPendientes.h"
 // Importar la clase HistorialOperaciones
 #include "HistorialOperaciones.h"
+// Importar la lista enlazada
+#include "ListaEnlazada.h"
 
 // Menu de opciones de la agenda de contactos pendientes
 void mostrarMenuAgendaContactosPendientes()
@@ -54,6 +56,31 @@ void gestionarAgendaContactosPendientes(AgendaContactosPendientes &agendaPendien
   }
 }
 
+// Funcion para gestionar la eliminacion de un contacto de la lista enlazada
+void gestionarEliminacionContacto(ListaEnlazada &listaContactos)
+{
+  // Mostrar la lista de contactos antes de eliminar
+  cout << "\nLista de contactos antes de eliminar:\n";
+  int numeroElementos = listaContactos.mostrarLista();
+
+  // Validar si hay contactos para eliminar
+  if (numeroElementos == 0)
+  {
+    cout << "\n||| No hay contactos para eliminar. |||\n";
+    return;
+  }
+
+  // Leer el numero de contacto a eliminar
+  int numeroContacto = Utilidades::leerNumUserEntero("\nIngrese el numero de posicion en la lista del contacto a eliminar: ");
+
+  // Eliminar el contacto de la lista enlazada
+  listaContactos.eliminarElemento(numeroContacto);
+
+  // Mostrar la lista de contactos despues de eliminar
+  cout << "\nLista de contactos despues de eliminar:\n";
+  listaContactos.mostrarLista();
+}
+
 int main()
 {
   // Objeto para almacenar los contactos (realizado con un ArrayList de Contactos)
@@ -74,6 +101,15 @@ int main()
   agendaPendientes.agregarContactoPendiente(contacto3);
   agendaPendientes.agregarContactoPendiente(contacto4);
 
+  // Lista enlazada para gestionar contactos
+  ListaEnlazada listaEnlazadaContactos;
+
+  // Agregar algunos contactos a la lista enlazada (reutilizar los mismos que en la agenda de pendientes)
+  listaEnlazadaContactos.insertarFinal(contacto1);
+  listaEnlazadaContactos.insertarFinal(contacto2);
+  listaEnlazadaContactos.insertarFinal(contacto3);
+  listaEnlazadaContactos.insertarFinal(contacto4);
+
   // Objeto para manejar el historial de operaciones (realizado con una pila de Operaciones)
   HistorialOperaciones historialOperaciones;
 
@@ -91,7 +127,7 @@ int main()
   while (true)
   {
     // Imprimir mensaje de opciones disponibles
-    cout << "\n\nOpciones disponibles:\n";
+    cout << "\n\nOpciones disponibles en el Gestor de Agenda de Contactos:\n";
     cout << "1. Agregar contacto\n";
     cout << "2. Listar contactos\n";
     cout << "3. Buscar contacto\n";
@@ -132,7 +168,7 @@ int main()
       // Limpiar el buffer de entrada antes de leer una cadena
       Utilidades::limpiarBufferEntrada();
       // Opcion para eliminar contacto
-      // agendaContactos.eliminarContacto();
+      gestionarEliminacionContacto(listaEnlazadaContactos);
       break;
     case 5:
       // Limpiar el buffer de entrada antes de leer una cadena

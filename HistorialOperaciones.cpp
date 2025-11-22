@@ -6,7 +6,7 @@ void HistorialOperaciones::agregarOperacion(const std::string &descripcion)
   historial.push(op);
 }
 
-// Mostrar ultima (primera) operacion del historial
+// Mostrar historial de operaciones (en LIFO)
 void HistorialOperaciones::mostrarHistorial()
 {
   if (!historial.empty())

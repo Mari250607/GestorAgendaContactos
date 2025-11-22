@@ -14,4 +14,7 @@ public:
 public:
   Contacto(string nom, int num, string mail)
       : nombre(nom), numero(num), email(mail) {}
+
+  // Constructor por defecto
+  Contacto() : nombre(""), numero(0), email("") {}
 };
