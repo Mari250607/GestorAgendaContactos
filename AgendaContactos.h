@@ -12,11 +12,11 @@ public:
   // Agrega contacto con datos especificos (usado para transferir desde pendientes)
   void agregarContacto(const Contacto &contacto);
 
-  // Mostrar todos los contactos en la agenda (ordenados por nombre)
-  void listarContactosNombre();
+  // Void ordenar contactos por nombre
+  void ordenarContactosPorNombre();
 
-  // Mostrar todos los contactos en la agenda (ordenados por numero)
-  void listarContactosNumero();
+  // Mostrar todos los contactos en la agenda (ordenados por nombre)
+  void listarContactos();
 
 private:
   // Vector para almacenar los contactos

@@ -9,7 +9,7 @@ void AgendaContactos::agregarContacto()
   int numero;
   string email;
 
-  cout << "\n\nIngrese el nombre del contacto: ";
+  std::cout << "\n\nIngrese el nombre del contacto: ";
   // Hasta que el nombre no sea valido (no nulo), seguir pidiendo
   while (true)
   {
@@ -30,22 +30,22 @@ void AgendaContactos::agregarContacto()
     else
     {
       std::cout << "\n *** Valor invalido.*** El nombre no puede estar vacio.\n";
-      cout << "\n Ingrese nuevamente el nombre del contacto: ";
+      std::cout << "\n Ingrese nuevamente el nombre del contacto: ";
     }
   }
 
-  cout << "\n\nIngrese el numero del contacto: ";
+  std::cout << "\n\nIngrese el numero del contacto: ";
   // Hasta que el numero no sea valido (de tipo numero y debe tener 8 digitos), seguir pidiendo
   while (true)
   {
-    if (!(cin >> numero))
+    if (!(std::cin >> numero))
     { // No es un número
-      cout << "\n ***Valor invalido.*** Debe ser un numero.\n";
-      cout << "\n Ingrese nuevamente el numero del contacto: ";
+      std::cout << "\n ***Valor invalido.*** Debe ser un numero.\n";
+      std::cout << "\n Ingrese nuevamente el numero del contacto: ";
       // Limpiar el error de la entrada
-      cin.clear();
+      std::cin.clear();
       // Ignorar el resto de la linea
-      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
       // Reintentar leer el numero
       continue;
     }
@@ -57,22 +57,22 @@ void AgendaContactos::agregarContacto()
       // Número válido, salir del bucle
       break;
 
-    cout << "\n *** Valor invalido.*** El numero debe ser de 8 digitos.\n ";
-    cout << "\n Ingrese nuevamente el numero del contacto: ";
+    std::cout << "\n *** Valor invalido.*** El numero debe ser de 8 digitos.\n ";
+    std::cout << "\n Ingrese nuevamente el numero del contacto: ";
   }
 
-  cout << "\n\nIngrese el email del contacto: ";
+  std::cout << "\n\nIngrese el email del contacto: ";
   // Hasta que el email no sea valido (contenga @ y .), seguir pidiendo
   while (true)
   {
-    if (!(cin >> email))
+    if (!(std::cin >> email))
     { // No es una entrada válida como string
-      cout << "\n ***Valor invalido.*** Debe ser un email valido que contenga '@' y '.'.\n";
-      cout << "\n Ingrese nuevamente el email del contacto: ";
+      std::cout << "\n ***Valor invalido.*** Debe ser un email valido que contenga '@' y '.'.\n";
+      std::cout << "\n Ingrese nuevamente el email del contacto: ";
       // Limpiar el error de la entrada
-      cin.clear();
+      std::cin.clear();
       // Ignorar el resto de la linea
-      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
       // Reintentar leer el email
       continue;
     }
@@ -81,22 +81,59 @@ void AgendaContactos::agregarContacto()
     if (email.find('@') != string::npos && email.find('.') != string::npos)
       break; // Email válido
 
-    cout << "\n ***Valor invalido.*** Debe ser un email valido que contenga '@' y '.'.\n";
-    cout << "\n Ingrese nuevamente el email del contacto: ";
+    std::cout << "\n ***Valor invalido.*** Debe ser un email valido que contenga '@' y '.'.\n";
+    std::cout << "\n Ingrese nuevamente el email del contacto: ";
   }
 
   Contacto nuevoContacto(nombre, numero, email);
   contactos.push_back(nuevoContacto);
 
   // Imprimir el contacto agregado
-  cout << "\n\nContacto agregado:\n";
-  cout << "Nombre: " << contactos.back().nombre << "\n";
-  cout << "Numero: " << contactos.back().numero << "\n";
-  cout << "Email: " << contactos.back().email << "\n";
+  std::cout << "\n\nContacto agregado:\n";
+  std::cout << "Nombre: " << contactos.back().nombre << "\n";
+  std::cout << "Numero: " << contactos.back().numero << "\n";
+  std::cout << "Email: " << contactos.back().email << "\n";
 }
 
 // Agrega contacto con datos especificos (usado para transferir desde pendientes)
 void AgendaContactos::agregarContacto(const Contacto &contacto)
 {
   contactos.push_back(contacto);
+}
+
+// Ordenar los contactos por nombre
+void AgendaContactos::ordenarContactosPorNombre()
+{
+  // Ordenar los contactos por nombre
+  for (size_t i = 0; i < contactos.size(); ++i) // Bucle externo sera el numero de pasadas
+  {
+    for (size_t j = 0; j < contactos.size() - i - 1; ++j) // Bucle interno para comparaciones
+    {
+      // Comparar nombres (si el actual es mayor que el siguiente, intercambiar)
+      if (contactos[j].nombre > contactos[j + 1].nombre)
+      {
+        std::swap(contactos[j], contactos[j + 1]); // Intercambiar contactos
+      }
+    }
+  }
+}
+
+// Mostrar todos los contactos en la agenda (ordenados por nombre)
+void AgendaContactos::listarContactos()
+{
+  // Si no hay contactos, mostrar mensaje
+  if (contactos.empty())
+  {
+    std::cout << "\n\n||| No hay contactos en la agenda principal para mostrar. |||\n";
+    return;
+  }
+
+  // Ordenar los contactos por nombre antes de mostrar
+  ordenarContactosPorNombre();
+
+  std::cout << "\n\nLista de Contactos (ordenados por nombre):\n";
+  for (const auto &contacto : contactos)
+  {
+    std::cout << "- Nombre: " << contacto.nombre << ", Numero: " << contacto.numero << ", Email: " << contacto.email << "\n";
+  }
 }

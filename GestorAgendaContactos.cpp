@@ -24,6 +24,19 @@ void mostrarMenuAgendaContactosPendientes()
   cout << "----------------------------------------------\n";
 }
 
+// Funcion para gestionar agregar nuevo contacto a la agenda principal
+void agregarNuevoContactoAgendaPrincipal(AgendaContactos &agendaPrincipal)
+{
+  // Llamar al metodo para agregar contacto a la agenda principal
+  agendaPrincipal.agregarContacto();
+
+  // Mensaje de confirmacion
+  cout << "\n||| Contacto agregado a la agenda principal exitosamente. |||\n";
+
+  // Imprime la agenda actualizada
+  agendaPrincipal.listarContactos();
+}
+
 // Funcion gestionar agenda pendientes
 void gestionarAgendaContactosPendientes(AgendaContactosPendientes &agendaPendientes, AgendaContactos &agendaPrincipal)
 {
@@ -113,11 +126,6 @@ int main()
   // Objeto para manejar el historial de operaciones (realizado con una pila de Operaciones)
   HistorialOperaciones historialOperaciones;
 
-  // Agregar operacion al historial
-  historialOperaciones.agregarOperacion("Se agrego un nuevo contacto.");
-  historialOperaciones.agregarOperacion("Se elimino un contacto.");
-  historialOperaciones.agregarOperacion("Se agrego un contacto.");
-
   // Saludo del sistema
   cout << "---------------------------------------------\n\n";
   cout << "Bienvenid@ al Gestor de Agenda de Contactos!";
@@ -149,14 +157,15 @@ int main()
       // Limpiar el buffer de entrada antes de leer una cadena
       Utilidades::limpiarBufferEntrada();
       // Opcion para agregar contacto
-      agendaContactos.agregarContacto();
-      historialOperaciones.agregarOperacion("Se agrego un nuevo contacto.");
+      agregarNuevoContactoAgendaPrincipal(agendaContactos);
+      // Agregar operacion al historial
+      historialOperaciones.agregarOperacion("Se agrego un nuevo contacto a la agenda de contactos.");
       break;
     case 2:
       // Limpiar el buffer de entrada antes de leer una cadena
       Utilidades::limpiarBufferEntrada();
       // Opcion para listar contactos
-      // agendaContactos.listarContactos();
+      agendaContactos.listarContactos();
       break;
     case 3:
       // Limpiar el buffer de entrada antes de leer una cadena
@@ -169,6 +178,8 @@ int main()
       Utilidades::limpiarBufferEntrada();
       // Opcion para eliminar contacto
       gestionarEliminacionContacto(listaEnlazadaContactos);
+      // Agregar operacion al historial
+      historialOperaciones.agregarOperacion("Se elimino un contacto de la lista enlazada.");
       break;
     case 5:
       // Limpiar el buffer de entrada antes de leer una cadena
