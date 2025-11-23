@@ -89,6 +89,12 @@ void gestionarAgendaContactosPendientes(AgendaContactosPendientes &agendaPendien
         agendaPendientes.transferirContactosPendientes(agendaPrincipal, historialOperaciones);
       }
       break;
+    default:
+      // Si es cualquier otra opcion, limpiar el buffer de entrada
+      cin.clear();
+      Utilidades::limpiarBufferEntrada();
+      cout << "Opcion invalida. Por favor, seleccione una opcion valida de las mostradas.\n\n";
+      break;
     }
   }
 }
@@ -265,7 +271,6 @@ int main()
       break;
     default:
       // Si es cualquier otra opcion, limpiar el buffer de entrada
-      cin.clear();
       Utilidades::limpiarBufferEntrada();
       cout << "Opcion invalida. Por favor, seleccione una opcion valida de las mostradas.\n\n";
       break;
