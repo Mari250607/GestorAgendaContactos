@@ -7,7 +7,7 @@ void AgendaContactosPendientes::agregarContactoPendiente(const Contacto &contact
 }
 
 // Transferir contactos pendientes a la agenda principal
-void AgendaContactosPendientes::transferirContactosPendientes(AgendaContactos &agenda)
+void AgendaContactosPendientes::transferirContactosPendientes(AgendaContactos &agenda, HistorialOperaciones &historialOperaciones)
 {
   // Validar si hay contactos pendientes
   if (contactosPendientes.empty())
@@ -24,6 +24,9 @@ void AgendaContactosPendientes::transferirContactosPendientes(AgendaContactos &a
     agenda.agregarContacto(contacto);
     // Eliminar el contacto ya transferido de la cola
     contactosPendientes.pop();
+    // Agregar operacion al historial
+    std::string descripcionOperacion = "Se agrego un nuevo contacto a la agenda de contactos (desde pendientes).";
+    historialOperaciones.agregarOperacion(descripcionOperacion);
   }
 
   cout << "\n\nTodos los contactos pendientes han sido transferidos a la agenda principal.\n";

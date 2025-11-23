@@ -18,6 +18,15 @@ public:
   // Mostrar todos los contactos en la agenda (ordenados por nombre)
   void listarContactos();
 
+  // Buscar contacto por numero (lineal)
+  void buscarContacto(int numero);
+
+  // Buscar contacto por nombre (binaria)
+  void buscarContacto(std::string nombre);
+
+  // Validar si la agenda esta vacia
+  bool isVacia();
+
 private:
   // Vector para almacenar los contactos
   std::vector<Contacto> contactos;

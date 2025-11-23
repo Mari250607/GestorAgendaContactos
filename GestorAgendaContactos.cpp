@@ -15,6 +15,20 @@ using namespace std;
 // Importar la lista enlazada
 #include "ListaEnlazada.h"
 
+// Menu principal del gestor de agenda de contactos
+void mostrarMenuPrincipal()
+{
+  cout << "\n\n--- Menu Principal del Gestor de Agenda de Contactos ---\n";
+  cout << "1. Agregar contacto\n";
+  cout << "2. Listar contactos\n";
+  cout << "3. Buscar contacto\n";
+  cout << "4. Eliminar contacto\n";
+  cout << "5. Historial de operaciones\n";
+  cout << "6. Contactos pendientes\n";
+  cout << "0. Salir\n";
+  cout << "--------------------------------------------------------\n";
+}
+
 // Menu de opciones de la agenda de contactos pendientes
 void mostrarMenuAgendaContactosPendientes()
 {
@@ -22,6 +36,16 @@ void mostrarMenuAgendaContactosPendientes()
   cout << "1. Transferir contactos pendientes a la agenda principal\n";
   cout << "0. Volver al menu principal\n";
   cout << "----------------------------------------------\n";
+}
+
+// Menu para la gestion de la busqueda de contactos
+void mostrarMenuBusquedaContactos()
+{
+  cout << "\n\n--- Menu de Busqueda de Contactos ---\n";
+  cout << "1. Buscar contacto por numero (lineal)\n";
+  cout << "2. Buscar contacto por nombre (binaria)\n";
+  cout << "0. Volver al menu principal\n";
+  cout << "-------------------------------------\n";
 }
 
 // Funcion para gestionar agregar nuevo contacto a la agenda principal
@@ -38,7 +62,7 @@ void agregarNuevoContactoAgendaPrincipal(AgendaContactos &agendaPrincipal)
 }
 
 // Funcion gestionar agenda pendientes
-void gestionarAgendaContactosPendientes(AgendaContactosPendientes &agendaPendientes, AgendaContactos &agendaPrincipal)
+void gestionarAgendaContactosPendientes(AgendaContactosPendientes &agendaPendientes, AgendaContactos &agendaPrincipal, HistorialOperaciones &historialOperaciones)
 {
   while (true)
   {
@@ -62,7 +86,7 @@ void gestionarAgendaContactosPendientes(AgendaContactosPendientes &agendaPendien
       // Opcion para transferir contactos pendientes a la agenda principal
       {
         // Transferir los contactos pendientes a la agenda principal
-        agendaPendientes.transferirContactosPendientes(agendaPrincipal);
+        agendaPendientes.transferirContactosPendientes(agendaPrincipal, historialOperaciones);
       }
       break;
     }
@@ -92,6 +116,59 @@ void gestionarEliminacionContacto(ListaEnlazada &listaContactos)
   // Mostrar la lista de contactos despues de eliminar
   cout << "\nLista de contactos despues de eliminar:\n";
   listaContactos.mostrarLista();
+}
+
+// Funcion para gestionar la busqueda de un contacto
+void gestionarBusquedaContacto(AgendaContactos &agendaContactos)
+{
+  // Si la agenda esta vacia, no se puede buscar
+  if (agendaContactos.isVacia())
+  {
+    cout << "\n||| La agenda de contactos esta vacia. No se pueden realizar busquedas. |||\n";
+    return;
+  }
+
+  // Imprimir el menu de busqueda de contactos
+  mostrarMenuBusquedaContactos();
+
+  // Obtener la opcion del usuario para la busqueda
+  int opcionMenu = Utilidades::leerNumUserEntero("\nIngrese una opcion del menu de busqueda: ");
+
+  // Procesar la opcion seleccionada
+  switch (opcionMenu)
+  {
+  case 0:
+    // Limpiar el buffer de entrada antes de leer una cadena
+    Utilidades::limpiarBufferEntrada();
+    // Opcion para volver al menu principal
+    return;
+  case 1:
+    // Limpiar el buffer de entrada antes de leer una cadena
+    Utilidades::limpiarBufferEntrada();
+    // Opcion para buscar por numero
+    {
+      int numero = Utilidades::leerNumUserEntero("\nIngrese el numero del contacto a buscar: ");
+      agendaContactos.buscarContacto(numero);
+    }
+    break;
+  case 2:
+    // Limpiar el buffer de entrada antes de leer una cadena
+    Utilidades::limpiarBufferEntrada();
+    // Opcion para buscar por nombre
+    {
+      string nombre;
+      cout << "\nIngrese el nombre del contacto a buscar: ";
+      getline(cin, nombre);
+      agendaContactos.buscarContacto(nombre);
+    }
+    break;
+  default:
+    // Si es cualquier otra opcion, limpiar el buffer de entrada
+    cin.clear();
+    Utilidades::limpiarBufferEntrada();
+    cout << "Opcion invalida. Por favor, seleccione una opcion valida de las mostradas.\n\n";
+    break;
+  }
 }
 
 int main()
@@ -135,14 +212,7 @@ int main()
   while (true)
   {
     // Imprimir mensaje de opciones disponibles
-    cout << "\n\nOpciones disponibles en el Gestor de Agenda de Contactos:\n";
-    cout << "1. Agregar contacto\n";
-    cout << "2. Listar contactos\n";
-    cout << "3. Buscar contacto\n";
-    cout << "4. Eliminar contacto\n";
-    cout << "5. Historial de operaciones\n";
-    cout << "6. Contactos pendientes\n";
-    cout << "0. Salir\n";
+    mostrarMenuPrincipal();
 
     // Obtener la opcion del usuario
     int opcion = Utilidades::leerNumUserEntero("\nIngrese una opcion: ");
@@ -171,7 +241,7 @@ int main()
       // Limpiar el buffer de entrada antes de leer una cadena
       Utilidades::limpiarBufferEntrada();
       // Opcion para buscar contacto
-      // agendaContactos.buscarContacto();
+      gestionarBusquedaContacto(agendaContactos);
       break;
     case 4:
       // Limpiar el buffer de entrada antes de leer una cadena
@@ -191,7 +261,7 @@ int main()
       // Limpiar el buffer de entrada antes de leer una cadena
       Utilidades::limpiarBufferEntrada();
       // Llamar a la funcion para gestionar la agenda de contactos pendientes
-      gestionarAgendaContactosPendientes(agendaPendientes, agendaContactos);
+      gestionarAgendaContactosPendientes(agendaPendientes, agendaContactos, historialOperaciones);
       break;
     default:
       // Si es cualquier otra opcion, limpiar el buffer de entrada

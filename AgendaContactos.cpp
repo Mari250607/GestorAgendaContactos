@@ -137,3 +137,78 @@ void AgendaContactos::listarContactos()
     std::cout << "- Nombre: " << contacto.nombre << ", Numero: " << contacto.numero << ", Email: " << contacto.email << "\n";
   }
 }
+
+// Buscar contacto por numero (lineal)
+void AgendaContactos::buscarContacto(int numero)
+{
+  // Buscar contacto por numero (busqueda lineal)
+  bool encontrado = false;
+
+  // Recorrer la lista de contactos
+  for (const auto &contacto : contactos)
+  {
+    // Comparar el numero actual con el buscado
+    if (contacto.numero == numero)
+    {
+      std::cout << "\nContacto encontrado:\n";
+      std::cout << "Nombre: " << contacto.nombre << "\n";
+      std::cout << "Numero: " << contacto.numero << "\n";
+      std::cout << "Email: " << contacto.email << "\n";
+      encontrado = true;
+      break; // Salir del bucle al encontrar el contacto
+    }
+  }
+  if (!encontrado)
+  {
+    std::cout << "\n||| El contacto con numero " << numero << " no se encuentra en la agenda de contactos. |||\n";
+  }
+}
+
+// Buscar contacto por nombre (binaria)
+void AgendaContactos::buscarContacto(std::string nombre)
+{
+  // Asegurarse de que los contactos esten ordenados por nombre antes de la busqueda binaria
+  ordenarContactosPorNombre();
+
+  // Izquierda es el inicio del vector, derecha es el final
+  int izquierda = 0;
+  int derecha = contactos.size() - 1;
+  bool encontrado = false;
+
+  // Mientras izquierda no supere a derecha
+  while (izquierda <= derecha)
+  {
+    // Calcular el punto medio
+    int medio = izquierda + (derecha - izquierda) / 2;
+
+    // Comparar el nombre del contacto en el medio con el nombre buscado
+    if (contactos[medio].nombre == nombre)
+    {
+      std::cout << "\nContacto encontrado:\n";
+      std::cout << "Nombre: " << contactos[medio].nombre << "\n";
+      std::cout << "Numero: " << contactos[medio].numero << "\n";
+      std::cout << "Email: " << contactos[medio].email << "\n";
+      encontrado = true;
+      break; // Salir del bucle al encontrar el contacto
+    }
+    else if (contactos[medio].nombre < nombre)
+    {
+      izquierda = medio + 1; // Buscar en la mitad derecha
+    }
+    else
+    {
+      derecha = medio - 1; // Buscar en la mitad izquierda
+    }
+  }
+
+  if (!encontrado)
+  {
+    std::cout << "\n||| El contacto con nombre '" << nombre << "' no se encuentra en la agenda de contactos. |||\n";
+  }
+}
+
+// Validar si la agenda esta vacia
+bool AgendaContactos::isVacia()
+{
+  return contactos.empty();
+}

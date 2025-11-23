@@ -6,6 +6,8 @@ using namespace std;
 #include "Contacto.h"
 // Importar la clase AgendaContactos
 #include "AgendaContactos.h"
+// Importar la clase HistorialOperaciones
+#include "HistorialOperaciones.h"
 
 class AgendaContactosPendientes
 {
@@ -18,5 +20,5 @@ public:
   void agregarContactoPendiente(const Contacto &contacto);
 
   // Transferir contactos pendientes a la agenda principal
-  void transferirContactosPendientes(AgendaContactos &agenda);
+  void transferirContactosPendientes(AgendaContactos &agenda, HistorialOperaciones &historialOperaciones);
 };
