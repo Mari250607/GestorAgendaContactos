@@ -129,21 +129,25 @@
   <ItemGroup>
     <ClCompile Include="AgendaContactos.cpp" />
     <ClCompile Include="AgendaContactosPendientes.cpp" />
+    <ClCompile Include="ArbolContactos.cpp" />
     <ClCompile Include="Contacto.cpp" />
     <ClCompile Include="GestorAgendaContactos.cpp" />
     <ClCompile Include="HistorialOperaciones.cpp" />
     <ClCompile Include="ListaEnlazada.cpp" />
     <ClCompile Include="Nodo.cpp" />
+    <ClCompile Include="NodoArbolContactos.cpp" />
     <ClCompile Include="Operacion.cpp" />
     <ClCompile Include="Utilidades.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AgendaContactos.h" />
     <ClInclude Include="AgendaContactosPendientes.h" />
+    <ClInclude Include="ArbolContactos.h" />
     <ClInclude Include="Contacto.h" />
     <ClInclude Include="HistorialOperaciones.h" />
     <ClInclude Include="ListaEnlazada.h" />
     <ClInclude Include="Nodo.h" />
+    <ClInclude Include="NodoArbolContactos.h" />
     <ClInclude Include="Operacion.h" />
     <ClInclude Include="Utilidades.h" />
   </ItemGroup>

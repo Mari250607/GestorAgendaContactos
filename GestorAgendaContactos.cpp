@@ -14,6 +14,10 @@ using namespace std;
 #include "HistorialOperaciones.h"
 // Importar la lista enlazada
 #include "ListaEnlazada.h"
+// Importar la clase ArbolContactos
+#include "ArbolContactos.h"
+// Importar la clase NodoArbolContactos
+#include "NodoArbolContactos.h"
 
 // Menu principal del gestor de agenda de contactos
 void mostrarMenuPrincipal()
@@ -25,6 +29,7 @@ void mostrarMenuPrincipal()
   cout << "4. Eliminar contacto\n";
   cout << "5. Historial de operaciones\n";
   cout << "6. Contactos pendientes\n";
+  cout << "7. Mostrar arbol de contactos\n";
   cout << "0. Salir\n";
   cout << "--------------------------------------------------------\n";
 }
@@ -176,6 +181,17 @@ void gestionarBusquedaContacto(AgendaContactos &agendaContactos)
   }
 }
 
+// Funcion para gestionar las opciones del arbol de contactos
+void gestionarArbolContactos(ArbolContactos &arbolContactos)
+{
+  cout << "\n--- Arbol de Contactos ---\n";
+  cout << "\nEn este arbol, los contactos se almacenan en orden alfabetico por nombre.\n\n";
+  cout << "Contactos en Inorden:\n";
+  arbolContactos.mostrarInorden(arbolContactos.getRaiz());
+  cout << "\nContactos en Preorden:\n";
+  arbolContactos.mostrarPreorden(arbolContactos.getRaiz());
+}
+
 int main()
 {
   // Objeto para almacenar los contactos (realizado con un ArrayList de Contactos)
@@ -184,17 +200,26 @@ int main()
   // Crear objeto de agenda de contactos pendientes
   AgendaContactosPendientes agendaPendientes;
 
+  // Arbol de contactos
+  ArbolContactos arbolContactos;
+
   // Crear contactos pendientes de ejemplo
   Contacto contacto1("Juan Perez", 77778888, "juan@gmail.com");
   Contacto contacto2("Maria Gomez", 87654321, "maria@gmail.com");
   Contacto contacto3("Luis Rodriguez", 23456789, "luis@gmail.com");
   Contacto contacto4("Ana Martinez", 98765432, "ana@gmail.com");
+  Contacto contacto5("Carlos Sanchez", 34567890, "carlos@gmail.com");
+  Contacto contacto6("Sofia Lopez", 45678901, "sofia@gmail.com");
+  Contacto contacto7("Diego Fernandez", 56789012, "diego@gmail.com");
 
   // Agregar contactos pendientes a la agenda de pendientes
   agendaPendientes.agregarContactoPendiente(contacto1);
   agendaPendientes.agregarContactoPendiente(contacto2);
   agendaPendientes.agregarContactoPendiente(contacto3);
   agendaPendientes.agregarContactoPendiente(contacto4);
+  agendaPendientes.agregarContactoPendiente(contacto5);
+  agendaPendientes.agregarContactoPendiente(contacto6);
+  agendaPendientes.agregarContactoPendiente(contacto7);
 
   // Lista enlazada para gestionar contactos
   ListaEnlazada listaEnlazadaContactos;
@@ -204,6 +229,18 @@ int main()
   listaEnlazadaContactos.insertarFinal(contacto2);
   listaEnlazadaContactos.insertarFinal(contacto3);
   listaEnlazadaContactos.insertarFinal(contacto4);
+  listaEnlazadaContactos.insertarFinal(contacto5);
+  listaEnlazadaContactos.insertarFinal(contacto6);
+  listaEnlazadaContactos.insertarFinal(contacto7);
+
+  // Agregar contactos al arbol de contactos
+  arbolContactos.insertarContacto(contacto1);
+  arbolContactos.insertarContacto(contacto2);
+  arbolContactos.insertarContacto(contacto3);
+  arbolContactos.insertarContacto(contacto4);
+  arbolContactos.insertarContacto(contacto5);
+  arbolContactos.insertarContacto(contacto6);
+  arbolContactos.insertarContacto(contacto7);
 
   // Objeto para manejar el historial de operaciones (realizado con una pila de Operaciones)
   HistorialOperaciones historialOperaciones;
@@ -267,6 +304,12 @@ int main()
       Utilidades::limpiarBufferEntrada();
       // Llamar a la funcion para gestionar la agenda de contactos pendientes
       gestionarAgendaContactosPendientes(agendaPendientes, agendaContactos, historialOperaciones);
+      break;
+    case 7:
+      // Limpiar el buffer de entrada antes de leer una cadena
+      Utilidades::limpiarBufferEntrada();
+      // Llamar a la funcion para gestionar el arbol de contactos
+      gestionarArbolContactos(arbolContactos);
       break;
     default:
       // Si es cualquier otra opcion, limpiar el buffer de entrada

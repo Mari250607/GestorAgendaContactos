@@ -42,6 +42,12 @@
     <ClCompile Include="ListaEnlazada.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NodoArbolContactos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArbolContactos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Contacto.h">
@@ -66,6 +72,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ListaEnlazada.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoArbolContactos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArbolContactos.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
