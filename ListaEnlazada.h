@@ -1,6 +1,5 @@
 #pragma once
 #include "Nodo.h"
-
 class ListaEnlazada
 {
 private:

@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "Contacto.h"
+using namespace std;
 
 // Clase que representa una agenda de contactos
 class AgendaContactos
@@ -22,12 +23,12 @@ public:
   void buscarContacto(int numero);
 
   // Buscar contacto por nombre (binaria)
-  void buscarContacto(std::string nombre);
+  void buscarContacto(string nombre);
 
   // Validar si la agenda esta vacia
   bool isVacia();
 
 private:
   // Vector para almacenar los contactos
-  std::vector<Contacto> contactos;
+  vector<Contacto> contactos;
 };

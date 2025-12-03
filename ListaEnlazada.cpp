@@ -1,6 +1,7 @@
 #include "ListaEnlazada.h"
 #include "Nodo.h"
 #include <iostream>
+using namespace std;
 
 void ListaEnlazada::insertarFinal(Contacto &contacto)
 {
@@ -33,7 +34,7 @@ int ListaEnlazada::mostrarLista()
   // Mostrar mensaje si la lista esta vacia
   if (cabeza == nullptr)
   {
-    std::cout << "La lista se encuentra vacia.\n\n";
+    cout << "La lista se encuentra vacia.\n\n";
     return 0;
   }
   // Indice de elementos (para mostrar como posicion en la lista)
@@ -43,7 +44,7 @@ int ListaEnlazada::mostrarLista()
   while (actual != nullptr)
   {
     // Mostrar el contacto actual
-    std::cout << indice << ". Nombre: " << actual->dato.nombre << ", Numero: " << actual->dato.numero << ", Email: " << actual->dato.email << std::endl;
+    cout << indice << ". Nombre: " << actual->dato.nombre << ", Numero: " << actual->dato.numero << ", Email: " << actual->dato.email << endl;
     actual = actual->siguiente;
     // Incrementar el indice
     indice++;
@@ -57,14 +58,14 @@ void ListaEnlazada::eliminarElemento(int numeroPosicion)
   // Validar que la posicion sea mayor a 0
   if (numeroPosicion <= 0)
   {
-    std::cout << "Posicion invalida. Debe ser mayor a 0.\n\n";
+    cout << "Posicion invalida. Debe ser mayor a 0.\n\n";
     return;
   }
 
   // Si la lista esta vacia, no hay nada que eliminar
   if (cabeza == nullptr)
   {
-    std::cout << "La lista esta vacia. No hay elementos para eliminar.\n\n";
+    cout << "La lista esta vacia. No hay elementos para eliminar.\n\n";
     return;
   }
 
@@ -74,7 +75,7 @@ void ListaEnlazada::eliminarElemento(int numeroPosicion)
     Nodo *nodoAEliminar = cabeza;
     cabeza = cabeza->siguiente; // Actualizar la cabeza al siguiente nodo
     delete nodoAEliminar;       // Liberar memoria del nodo eliminado
-    std::cout << "\n\n||| Elemento en la posicion " << numeroPosicion << " eliminado. |||\n\n";
+    cout << "\n\n||| Elemento en la posicion " << numeroPosicion << " eliminado. |||\n\n";
     return;
   }
 
@@ -96,12 +97,12 @@ void ListaEnlazada::eliminarElemento(int numeroPosicion)
   // Si actual es nullptr, significa que la posicion es invalida
   if (actual == nullptr)
   {
-    std::cout << "Posición invalida. No existe un elemento en la posicion " << numeroPosicion << ".\n\n";
+    cout << "Posición invalida. No existe un elemento en la posicion " << numeroPosicion << ".\n\n";
     return;
   }
 
   // Ajustar los punteros para eliminar el nodo
   anterior->siguiente = actual->siguiente;
   delete actual; // Liberar memoria del nodo eliminado
-  std::cout << "\n\n||| Elemento en la posicion " << numeroPosicion << " eliminado. |||\n\n";
+  cout << "\n\n||| Elemento en la posicion " << numeroPosicion << " eliminado. |||\n\n";
 }

@@ -1,24 +1,25 @@
 #include "Utilidades.h"
+using namespace std;
 
 // Leer un numero entero ingresado por el usuario con un mensaje personalizado
-int Utilidades::leerNumUserEntero(const std::string &mensaje)
+int Utilidades::leerNumUserEntero(const string &mensaje)
 {
   int numero;
   while (true)
   {
-    std::cout << mensaje;
-    if (std::cin >> numero)
+    cout << mensaje;
+    if (cin >> numero)
     {
       // Entrada valida, salir del bucle
       break;
     }
     else
     {
-      std::cout << "\n *** Valor invalido.*** Debe ser un numero entero.\n\n";
+      cout << "\n *** Valor invalido.*** Debe ser un numero entero.\n\n";
       // Limpiar el error de la entrada
-      std::cin.clear();
+      cin.clear();
       // Ignorar el resto de la linea
-      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
   }
   return numero;
@@ -27,6 +28,6 @@ int Utilidades::leerNumUserEntero(const std::string &mensaje)
 // Limpiar el buffer de entrada
 void Utilidades::limpiarBufferEntrada()
 {
-  std::cin.clear();
-  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+  cin.clear();
+  cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }

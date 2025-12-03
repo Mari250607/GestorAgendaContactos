@@ -1,6 +1,8 @@
 #include "HistorialOperaciones.h"
+using namespace std;
+
 // Agrega una nueva operacion al historial
-void HistorialOperaciones::agregarOperacion(const std::string &descripcion)
+void HistorialOperaciones::agregarOperacion(const string &descripcion)
 {
   Operacion op(descripcion);
   historial.push(op);
@@ -12,21 +14,21 @@ void HistorialOperaciones::mostrarHistorial()
   if (!historial.empty())
   {
     // Se copia la pila para no modificar el historial original
-    std::stack<Operacion> copiaHistorial = historial;
-    std::cout << "\nHistorial de operaciones:\n";
+    stack<Operacion> copiaHistorial = historial;
+    cout << "\nHistorial de operaciones:\n";
     // Iterar sobre la pila y mostrar cada operacion
     while (!copiaHistorial.empty())
     {
       // Obtener la operacion superior
       Operacion op = copiaHistorial.top();
       // Mostrar la descripcion de la operacion
-      std::cout << "- " << op.getDescripcion() << std::endl;
+      cout << "- " << op.getDescripcion() << endl;
       // Eliminar la operacion ya mostrada
       copiaHistorial.pop();
     }
   }
   else
   {
-    std::cout << "El historial de operaciones esta vacio.\n";
+    cout << "El historial de operaciones esta vacio.\n";
   }
 }

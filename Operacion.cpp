@@ -1,6 +1,7 @@
 #include "Operacion.h"
+using namespace std;
 
-std::string Operacion::getDescripcion()
+string Operacion::getDescripcion()
 {
   return descripcion;
 }

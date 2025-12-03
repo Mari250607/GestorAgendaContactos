@@ -1,4 +1,5 @@
 #include "AgendaContactosPendientes.h"
+using namespace std;
 
 // Agrega un contacto a la cola de pendientes con datos especificos
 void AgendaContactosPendientes::agregarContactoPendiente(const Contacto &contacto)
@@ -12,7 +13,7 @@ void AgendaContactosPendientes::transferirContactosPendientes(AgendaContactos &a
   // Validar si hay contactos pendientes
   if (contactosPendientes.empty())
   {
-    std::cout << "\n\nNo hay contactos pendientes para transferir.\n";
+    cout << "\n\nNo hay contactos pendientes para transferir.\n";
     return;
   }
 
@@ -25,7 +26,7 @@ void AgendaContactosPendientes::transferirContactosPendientes(AgendaContactos &a
     // Eliminar el contacto ya transferido de la cola
     contactosPendientes.pop();
     // Agregar operacion al historial
-    std::string descripcionOperacion = "Se agrego un nuevo contacto a la agenda de contactos (desde pendientes).";
+    string descripcionOperacion = "Se agrego un nuevo contacto a la agenda de contactos (desde pendientes).";
     historialOperaciones.agregarOperacion(descripcionOperacion);
   }
 
