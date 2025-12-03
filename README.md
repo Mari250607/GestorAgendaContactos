@@ -22,3 +22,7 @@ Este proyecto es un sistema de gestión de contactos que permite a los usuarios 
    - En Visual Studio, selecciona "Build" > "Build Solution" o presiona `Ctrl + Shift + B`.
 4. Ejecuta el programa:
    - Después de compilar, selecciona "Debug" > "Start Without Debugging" o presiona `Ctrl + F5`.
+
+(En caso de presentar el siguiente error: No se pueden encontrar las herramientas de compilación para v145 (Conjunto de herramientas de la plataforma = 'v145'). Para compilar con las herramientas de compilación v145, instale las herramientas de compilación v145.)
+
+Debe seguir los siguientes pasos: - En Visual Studio, click derecho sobre la solución "GestorAgendaContactos" en el Explorador de soluciones y seleccione "Propiedades -> General -> Plattform Toolset" y cambiar a la versión instalada en su equipo (Ejemplo: v142, v143).
